@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<title>Wishlist — Saudade</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IM+Fell+English:ital@0;1&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+
+<header>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">Saudade<span>Heritage Crafted, Modernity Worn</span></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="products.html">Collection</a>
+      <a href="offers.html">Offers</a>
+      <a href="stories.html">Stories</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="wishlist.html" class="nav-icon">♡<span class="badge wishlist-badge">0</span></a>
+      <button class="menu-toggle">☰</button>
+    </div>
+  </div>
+</header>
+</head>
+
+<body>
+<div class="page-hero">
+  <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><span>Wishlist</span></div>
+  <h1>Your Wishlist</h1>
+  <p>Pieces your heart has saved — waiting for the moment to become yours.</p>
+</div>
+
+<section class="section">
+  <div class="section-inner">
+    <!-- Wishlist display -->
+    <div id="wishlistDisplay">
+      <!-- Pre-saved demo items -->
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid var(--border-gold);">
+        <span style="color:var(--text-muted);font-style:italic;" id="wishlistCount">3 pieces saved</span>
+        <button onclick="clearWishlistDisplay()" class="btn-outline" style="padding:0.5rem 1.5rem;font-size:0.7rem;">Clear All</button>
+      </div>
+      <div class="wishlist-grid" id="wishlistGrid">
+        <div class="product-card">
+          <div class="product-image">
+            <div class="product-img-bg" style="background:linear-gradient(135deg,#5c1a1a,#8b3a2a);">
+              <div class="product-art">🎨</div>
+            </div>
+            <div class="product-badge badge-bestseller">Bestseller</div>
+            <div class="product-actions" style="opacity:1;transform:none;">
+              <button class="product-action-btn wishlisted" onclick="removeWishItem(this,'w001')">♥</button>
+              <a href="product-detail.html" class="product-action-btn">👁</a>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="product-tag">Madhubani · Top</div>
+            <div class="product-name">Mithila Blossom Kurta</div>
+            <div class="product-price"><span class="price-current">₹2,450</span><span class="price-original">₹3,200</span></div>
+            <div class="product-colors">
+              <div class="color-dot" style="background:#8b3a2a;"></div>
+              <div class="color-dot" style="background:#2d3a6b;"></div>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-image">
+            <div class="product-img-bg" style="background:linear-gradient(135deg,#5a3a1a,#c9952a);">
+              <div class="product-art">🪷</div>
+            </div>
+            <div class="product-badge badge-sale">Sale</div>
+            <div class="product-actions" style="opacity:1;transform:none;">
+              <button class="product-action-btn wishlisted" onclick="removeWishItem(this,'w002')">♥</button>
+              <a href="product-detail.html" class="product-action-btn">👁</a>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="product-tag">Phulkari · Ethnic</div>
+            <div class="product-name">Punjab Bloom Anarkali</div>
+            <div class="product-price"><span class="price-current">₹5,800</span><span class="price-original">₹7,500</span></div>
+            <div class="product-colors">
+              <div class="color-dot" style="background:#c9952a;"></div>
+              <div class="color-dot" style="background:#c4603a;"></div>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-image">
+            <div class="product-img-bg" style="background:linear-gradient(135deg,#3a1a5a,#6b3a9e);">
+              <div class="product-art">🦋</div>
+            </div>
+            <div class="product-actions" style="opacity:1;transform:none;">
+              <button class="product-action-btn wishlisted" onclick="removeWishItem(this,'w003')">♥</button>
+              <a href="product-detail.html" class="product-action-btn">👁</a>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="product-tag">Bandhani · Dress</div>
+            <div class="product-name">Rajasthani Tie-Dye Dress</div>
+            <div class="product-price"><span class="price-current">₹3,600</span></div>
+            <div class="product-colors">
+              <div class="color-dot" style="background:#6b3a9e;"></div>
+              <div class="color-dot" style="background:#c4603a;"></div>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add all to cart -->
+      <div style="margin-top:3rem;text-align:center;padding:2rem;background:var(--bg-card);border:1px solid var(--border-gold);border-radius:4px;">
+        <h3 style="margin-bottom:0.5rem;font-size:1.2rem;">Ready to make them yours?</h3>
+        <p style="color:var(--text-muted);font-style:italic;margin-bottom:1.5rem;">Add all 3 wishlist items to cart and complete your folk art collection.</p>
+        <button class="btn-primary" onclick="showToast('<span>✓</span> All items added to cart!')"><span>Add All to Cart — ₹11,850</span></button>
+      </div>
+    </div>
+         
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="index.html" class="logo">Saudade<span>Heritage Crafted</span></a><p style="margin-top:1rem;">Every purchase supports India's folk artisans.</p></div>
+      <div class="footer-col"><h4>Collections</h4><ul><li><a href="products.html">All Products</a></li><li><a href="new-arrivals.html">New Arrivals</a></li><li><a href="offers.html">Offers</a></li></ul></div>
+      <div class="footer-col"><h4>Discover</h4><ul><li><a href="stories.html">Stories</a></li><li><a href="about.html">About Us</a></li><li><a href="faqs.html">FAQs</a></li></ul></div>
+      <div class="footer-col"><h4>Account</h4><ul><li><a href="account.html">Sign In</a></li><li><a href="wishlist.html">Wishlist</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>© 2025 Saudade. All rights reserved.</p></div>
+  </div>
+</footer>
+
+<div class="toast"></div>
+<div class="page-bg-pattern"></div>
+</body>
+<script src="js/main.js"></script>
+<script>
+function removeWishItem(btn, id) {
+  const card = btn.closest('.product-card');
+  card.style.transition = 'all 0.4s ease';
+  card.style.opacity = '0';
+  card.style.transform = 'scale(0.9)';
+  setTimeout(() => {
+    card.remove();
+    const remaining = document.querySelectorAll('#wishlistGrid .product-card').length;
+    const countEl = document.getElementById('wishlistCount');
+    if (countEl) countEl.textContent = remaining + ' piece' + (remaining !== 1 ? 's' : '') + ' saved';
+    if (remaining === 0) {
+      document.getElementById('wishlistDisplay').innerHTML = `
+        <div class="wishlist-empty">
+          <div class="wishlist-empty-icon">♡</div>
+          <h2>Your Wishlist is Empty</h2>
+          <p>Save pieces that speak to your soul</p>
+          <a href="products.html" class="btn-primary" style="margin-top:1.5rem;display:inline-block;"><span>Explore Collection</span></a>
+        </div>`;
+    }
+  }, 400);
+  showToast('Removed from Wishlist');
+}
+function clearWishlistDisplay() {
+  document.querySelectorAll('#wishlistGrid .product-card').forEach((card, i) => {
+    setTimeout(() => {
+      card.style.transition = 'all 0.3s ease';
+      card.style.opacity = '0';
+      setTimeout(() => card.remove(), 300);
+    }, i * 100);
+  });
+  setTimeout(() => {
+    document.getElementById('wishlistDisplay').innerHTML = `
+      <div class="wishlist-empty">
+        <div class="wishlist-empty-icon">♡</div>
+        <h2>Your Wishlist is Empty</h2>
+        <p>Save pieces that speak to your soul</p>
+        <a href="products.html" class="btn-primary" style="margin-top:1.5rem;display:inline-block;"><span>Explore Collection</span></a>
+      </div>`;
+  }, 600);
+}
+</script>
+</html>

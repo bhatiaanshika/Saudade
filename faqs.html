@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<title>FAQs — Saudade</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IM+Fell+English:ital@0;1&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+
+<header>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">Saudade<span>Heritage Crafted, Modernity Worn</span></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="products.html">Collection</a>
+      <a href="offers.html">Offers</a>
+      <a href="stories.html">Stories</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="wishlist.html" class="nav-icon">♡<span class="badge wishlist-badge">0</span></a>
+      <button class="menu-toggle">☰</button>
+    </div>
+  </div>
+</header>
+</head>
+
+<body>
+<div class="page-hero">
+  <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><span>FAQs</span></div>
+  <h1>Frequently Asked Questions</h1>
+  <p>Everything you need to know about Saudade, our pieces, and the artisans behind them.</p>
+</div>
+
+<section class="section">
+  <div class="section-inner">
+
+    <!-- FAQ CATEGORY TABS -->
+    <div style="display:flex; gap:0.5rem; margin-bottom:3rem; flex-wrap:wrap; justify-content:center;">
+      <button class="size-btn selected" onclick="showFaqCat(this,'all')">All Questions</button>
+      <button class="size-btn" onclick="showFaqCat(this,'orders')">Orders &amp; Shipping</button>
+      <button class="size-btn" onclick="showFaqCat(this,'products')">Products &amp; Sizing</button>
+      <button class="size-btn" onclick="showFaqCat(this,'care')">Care &amp; Returns</button>
+      <button class="size-btn" onclick="showFaqCat(this,'artisans')">Artisans &amp; Craft</button>
+    </div>
+
+    <div class="faq-list">
+
+      <!-- ORDERS & SHIPPING -->
+      <div class="faq-item" data-cat="orders">
+        <div class="faq-question">
+          <h3>How long does delivery take?</h3>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Standard delivery across India takes 5–7 working days. Express delivery (2–3 days) is available at checkout for an additional charge. International orders ship in 10–15 working days. Since many of our pieces are handcrafted to order, some items may take slightly longer — we'll always let you know at checkout if that's the case.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-cat="orders">
+        <div class="faq-question">
+          <h3>Do you offer free shipping?</h3>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Yes! All orders above ₹2,000 qualify for free standard shipping within India. You can also use the code <strong style="color:var(--accent-gold);">SHIP0</strong> at checkout for free shipping on your first order, regardless of amount. International shipping rates vary by destination and are calculated at checkout.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-cat="orders">
+        <div class="faq-question">
+          <h3>Can I track my order?</h3>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Absolutely. Once your order is dispatched, you'll receive a tracking number via email and SMS. You can use this to track your parcel on our courier partner's website. If you have a Saudade account, you can also view live order status in your account dashboard under "My Orders".
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-cat="orders">
+        <div class="faq-question">
+          <h3>Do you ship internationally?</h3>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Yes, we ship to over 40 countries worldwide. International shipping typically takes 10–15 business days. Please note that customs duties and import taxes may apply depending on your country, and these are the buyer's responsibility. We declare the true value of goods on all customs forms.
+          </div>
+        </div>
+      </div>
+
+      <!-- PRODUCTS & SIZING -->
+      <div class="faq-item" data-cat="products">
+        <div class="faq-question">
+          <h3>How do I find my right size?</h3>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Each product page has a detailed size guide with chest, waist, and hip measurements in both inches and centimetres. Our garments run true to size. If you're between sizes, we recommend sizing up for a more relaxed fit — which suits our flowing folk-art styles beautifully. Our customer care team is also happy to help you choose the right size via WhatsApp or email.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-cat="products">
+        <div class="faq-question">
+          <h3>Are all pieces truly handmade?</h3>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Every single piece. We do not use machine prints, digital prints, or screen-printed mass reproductions. Each motif is hand-applied — whether hand-painted (Madhubani, Warli, Kalamkari), hand-embroidered (Phulkari, Chikankari), or hand block-printed (Ajrakh, Bagru). Because of this, minor variations between pieces are normal and make each garment uniquely yours.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-cat="products">
+        <div class="faq-question">
+          <h3>What fabrics do you use?</h3>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            We use handloom-woven fabrics exclusively — primarily pure cotton, khadi, and silk, depending on the garment. All fabrics are sourced from weaver cooperatives across India. We never use synthetic fabrics or blended materials that compromise breathability or artisan integrity. Fabric details are listed on each product page.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-cat="products">
+        <div class="faq-question">
+          <h3>Can I customise a piece or request a specific size?</h3>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Yes — we offer customisation on select pieces. This includes custom sizing (for an additional charge), alternative colourways, and in some cases, personalised motifs. Customisation orders typically take 3–4 weeks. Please email us at hello@Saudade.in or WhatsApp us with your requirements and we'll let you know what's possible.
+          </div>
+        </div>
+      </div>
+
+      <!-- CARE & RETURNS -->
+      <div class="faq-item" data-cat="care">
+        <div class="faq-question">
+          <h3>How should I care for my Saudade pieces?</h3>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Hand wash in cold water with a gentle, pH-neutral detergent. Do not use bleach or fabric softeners. Do not wring — gently press out water and dry flat in shade. Avoid prolonged exposure to direct sunlight, which can fade natural dyes over time. Iron on the reverse side on low heat. Each garment also comes with a printed care card.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-cat="care">
+        <div class="faq-question">
+          <h3>What is your return and exchange policy?</h3>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            We offer a 15-day return policy from the date of delivery. Items must be unworn, unwashed, and in their original packaging with tags attached. To initiate a return, email us at hello@Saudade.in with your order number and reason for return. We'll arrange a pickup at no cost to you. Refunds are processed within 5–7 working days of receiving the returned item.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-cat="care">
+        <div class="faq-question">
+          <h3>What if my item arrives damaged or incorrect?</h3>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            We're so sorry if that happens. Please photograph the item and contact us within 48 hours of delivery at hello@Saudade.in. We will arrange an immediate replacement or full refund, including return shipping, at absolutely no cost to you. This is our unconditional promise.
+          </div>
+        </div>
+      </div>
+
+      <!-- ARTISANS & CRAFT -->
+      <div class="faq-item" data-cat="artisans">
+        <div class="faq-question">
+          <h3>How do you ensure fair pay for your artisans?</h3>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            We pay our artisan partners a minimum of 3x the local market rate for comparable work. Artisans receive upfront advances before beginning work, so they are never financially exposed during production. We publish our payment principles on our website and undergo annual fair trade audits. A minimum of 15% of our net profits goes directly into an artisan welfare fund.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-cat="artisans">
+        <div class="faq-question">
+          <h3>Which folk art traditions do you work with?</h3>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Currently we work with 12 traditions: Madhubani (Bihar), Warli (Maharashtra), Kalamkari (Andhra Pradesh), Phulkari (Punjab), Bandhani (Rajasthan &amp; Gujarat), Ajrakh (Kutch), Pattachitra (Odisha), Chikankari (Uttar Pradesh), Ikat (Telangana &amp; Odisha), Kantha (West Bengal), Gond (Madhya Pradesh), and Pichwai (Rajasthan). We add new traditions as we build trusted partnerships with artisan communities.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-cat="artisans">
+        <div class="faq-question">
+          <h3>Can I visit an artisan community or workshop?</h3>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Yes! We occasionally organise "Heritage Visits" — curated trips to our artisan communities in Bihar, Maharashtra, Punjab and Rajasthan. These are intimate, small-group experiences where you can watch the craft in action, speak with the artisans, and understand the tradition deeply. Sign up for our newsletter to be notified of upcoming visits.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-cat="artisans">
+        <div class="faq-question">
+          <h3>I am an artisan. How can I partner with Saudade?</h3>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            We are always looking to build new artisan partnerships. Please email us at artisans@Saudade.in with photographs of your work, a brief description of your craft tradition, your location, and the size of your group or collective. Our artisan relations team reviews all applications and responds within two weeks. We particularly welcome applications from underrepresented traditions and women-led collectives.
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- STILL HAVE QUESTIONS -->
+    <div style="margin-top:4rem; text-align:center; background:var(--bg-card); border:1px solid var(--border-gold); border-radius:4px; padding:3rem;">
+      <div style="font-size:2.5rem; margin-bottom:1rem;">💬</div>
+      <h2 style="font-size:1.8rem; margin-bottom:0.5rem;">Still Have Questions?</h2>
+      <p style="color:var(--text-muted); font-style:italic; margin-bottom:2rem;">
+        Our team is happy to help. Reach out and we'll get back to you within 24 hours.
+      </p>
+      <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+        <a href="contact.html" class="btn-primary"><span>Contact Us</span></a>
+        <a href="https://wa.me/918422066343" class="btn-outline">WhatsApp Us</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">Saudade<span>Heritage Crafted</span></a>
+        <p style="margin-top:1rem;">Every purchase supports India's folk artisans and their ancient crafts.</p>
+        <div class="footer-social" style="margin-top:1rem;">
+          <a href="#" class="social-btn">f</a>
+          <a href="#" class="social-btn">✦</a>
+          <a href="#" class="social-btn">in</a>
+          <a href="#" class="social-btn">▶</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Collections</h4>
+        <ul>
+          <li><a href="products.html">All Products</a></li>
+          <li><a href="products.html?cat=tops">Tops</a></li>
+          <li><a href="products.html?cat=dresses">Dresses</a></li>
+          <li><a href="products.html?cat=ethnic">Ethnic Wear</a></li>
+          <li><a href="new-arrivals.html">New Arrivals</a></li>
+          <li><a href="offers.html">Offers &amp; Sales</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Discover</h4>
+        <ul>
+          <li><a href="stories.html">Folk Art Stories</a></li>
+          <li><a href="about.html">Our Story</a></li>
+          <li><a href="faqs.html">FAQs</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Account</h4>
+        <ul>
+          <li><a href="account.html">Sign In</a></li>
+          <li><a href="account.html">Create Account</a></li>
+          <li><a href="wishlist.html">Wishlist</a></li>
+          <li><a href="#">Order Tracking</a></li>
+          <li><a href="#">Returns</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Saudade. All rights reserved. Made with reverence for India's artisans.</p>
+      <p>
+        <a href="#" style="color:var(--text-muted); text-decoration:none;">Privacy Policy</a>
+        ·
+        <a href="#" style="color:var(--text-muted); text-decoration:none;">Terms of Service</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<div class="toast"></div>
+<div class="page-bg-pattern"></div>
+</body>
+<script src="js/main.js"></script>
+<script>
+function showFaqCat(btn, cat) {
+  document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const itemCat = item.dataset.cat || '';
+    item.style.display = (cat === 'all' || itemCat === cat) ? 'block' : 'none';
+    item.classList.remove('open');
+  });
+}
+</script>
+</html>

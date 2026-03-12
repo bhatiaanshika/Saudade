@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<title>Folk Art Stories — Saudade</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IM+Fell+English:ital@0;1&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .story-hero-banner {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    position: relative; overflow: hidden;
+    background: var(--bg-primary);
+    padding-top: 72px;
+  }
+  .story-hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 10% 60%, rgba(139,58,42,0.45) 0%, transparent 55%),
+      radial-gradient(ellipse at 85% 25%, rgba(201,149,42,0.25) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 90%, rgba(45,58,107,0.3) 0%, transparent 50%);
+  }
+  .story-hero-grid-bg {
+    position: absolute; inset: 0; opacity: 0.035;
+    background-image:
+      repeating-linear-gradient(45deg, var(--accent-gold) 0, var(--accent-gold) 1px, transparent 0, transparent 35px),
+      repeating-linear-gradient(-45deg, var(--accent-gold) 0, var(--accent-gold) 1px, transparent 0, transparent 35px);
+  }
+  .story-hero-inner {
+    position: relative; z-index: 2;
+    max-width: 1400px; margin: 0 auto;
+    padding: 4rem 2rem;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 5rem; align-items: center; width: 100%;
+  }
+  .story-floating-cards { position: relative; height: 520px; }
+  .sfc {
+    position: absolute; border-radius: 6px;
+    border: 1px solid var(--border-gold);
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 0.5rem; overflow: hidden;
+  }
+  .sfc-pattern {
+    position: absolute; inset: 0; opacity: 0.1;
+    background-image: repeating-radial-gradient(circle at 50% 50%, rgba(255,255,255,0.7) 0, rgba(255,255,255,0.7) 1px, transparent 1px, transparent 16px);
+  }
+  .sfc-1 { width:220px; height:300px; top:0; left:0; background:linear-gradient(150deg,#5c1a1a,#c4603a); animation: sfloat1 7s ease-in-out infinite; }
+  .sfc-2 { width:190px; height:260px; top:60px; left:160px; background:linear-gradient(150deg,#2d3a6b,#5a6aae); animation: sfloat2 9s ease-in-out infinite; }
+  .sfc-3 { width:210px; height:280px; top:180px; left:60px; background:linear-gradient(150deg,#2a4a2a,#6b8c4a); animation: sfloat3 6s ease-in-out infinite; }
+  .sfc-label { font-family:var(--font-display); font-size:0.6rem; letter-spacing:0.2em; color:rgba(255,255,255,0.6); text-transform:uppercase; position:relative; }
+  .sfc-title { font-family:var(--font-heading); font-size:1.3rem; font-weight:700; color:white; text-align:center; position:relative; padding:0 1rem; }
+  .sfc-icon { font-size:3rem; position:relative; }
+  @keyframes sfloat1 { 0%,100%{transform:rotate(-5deg) translateY(0)} 50%{transform:rotate(-5deg) translateY(-14px)} }
+  @keyframes sfloat2 { 0%,100%{transform:rotate(4deg) translateY(0)} 50%{transform:rotate(4deg) translateY(-10px)} }
+  @keyframes sfloat3 { 0%,100%{transform:rotate(-2deg) translateY(0)} 50%{transform:rotate(-2deg) translateY(-18px)} }
+
+  .story-article {
+    background: var(--bg-card); border: 1px solid var(--border-gold);
+    border-radius: 6px; overflow: hidden; margin-bottom: 2.5rem;
+    transition: var(--transition);
+  }
+  .story-article:hover { box-shadow: var(--shadow-warm); }
+  .story-article-inner { display: grid; grid-template-columns: 340px 1fr; }
+  .story-article-img {
+    min-height: 280px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 5.5rem; position: relative; overflow: hidden; flex-shrink: 0;
+  }
+  .story-article-img-pat {
+    position: absolute; inset: 0; opacity: 0.1;
+    background-image: repeating-linear-gradient(60deg, rgba(255,255,255,0.5) 0, rgba(255,255,255,0.5) 1px, transparent 1px, transparent 18px);
+  }
+  .story-article-img span { position: relative; }
+  .story-article-body { padding: 2.5rem; display: flex; flex-direction: column; justify-content: center; }
+  .story-article-region {
+    display: inline-block; font-family: var(--font-display);
+    font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+    background: rgba(201,149,42,0.12); border: 1px solid var(--border-gold);
+    color: var(--accent-gold); padding: 0.25rem 0.8rem; border-radius: 2px; margin-bottom: 1rem;
+  }
+  .story-article h3 { font-size: 1.65rem; font-weight: 700; line-height: 1.25; margin-bottom: 1rem; color: var(--text-light); }
+  .story-article p { color: var(--text-muted); font-style: italic; line-height: 1.85; margin-bottom: 1rem; font-size: 1rem; }
+  .story-article-footer {
+    display: flex; align-items: center; gap: 1.5rem;
+    padding-top: 1.25rem; border-top: 1px solid var(--border-gold);
+    flex-wrap: wrap;
+  }
+  .story-meta-item { font-size: 0.82rem; color: var(--text-muted); }
+  .story-meta-item b { color: var(--accent-gold); font-style: normal; }
+  .read-more-btn {
+    margin-left: auto; font-family: var(--font-display); font-size: 0.68rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--accent-gold); text-decoration: none;
+    border: 1px solid var(--border-gold); padding: 0.45rem 1.2rem; border-radius: 2px;
+    transition: var(--transition); cursor: pointer; background: none;
+  }
+  .read-more-btn:hover { background: var(--accent-gold); color: var(--bg-primary); }
+
+  .story-expanded {
+    display: none; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-gold);
+  }
+  .story-expanded p { margin-bottom: 1rem; }
+  .pull-quote {
+    background: linear-gradient(135deg, var(--bg-secondary), var(--bg-card));
+    border-left: 4px solid var(--accent-gold); border-radius: 0 4px 4px 0;
+    padding: 1.75rem 2.25rem; margin: 1.5rem 0;
+  }
+  .pull-quote blockquote { font-family: var(--font-heading); font-size: 1.35rem; font-style: italic; color: var(--text-light); line-height: 1.55; margin-bottom: 0.75rem; }
+  .pull-quote cite { font-family: var(--font-display); font-size: 0.7rem; letter-spacing: 0.15em; color: var(--accent-gold); font-style: normal; }
+
+  .story-filter-bar { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 3rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border-gold); }
+
+  .sotw-banner {
+    background: linear-gradient(135deg, #1a0a04, #3a1a08, #1a0a04);
+    border: 1px solid var(--accent-gold); border-radius: 6px;
+    padding: 3rem; display: grid; grid-template-columns: 1fr auto;
+    gap: 2rem; align-items: center; margin-bottom: 4rem;
+    position: relative; overflow: hidden;
+  }
+  .sotw-banner::before {
+    content: ''; position: absolute; inset: 0; opacity: 0.04;
+    background-image: repeating-linear-gradient(45deg, var(--accent-gold) 0, var(--accent-gold) 1px, transparent 1px, transparent 22px);
+  }
+  .sotw-tag {
+    font-family: var(--font-display); font-size: 0.65rem; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--accent-amber); margin-bottom: 0.75rem;
+    display: flex; align-items: center; gap: 0.75rem; position: relative;
+  }
+  .sotw-tag::before { content: ''; width: 30px; height: 1px; background: var(--accent-amber); }
+  .sotw-banner h2 { font-size: 2rem; margin-bottom: 0.75rem; position: relative; }
+  .sotw-banner p { color: var(--text-muted); font-style: italic; position: relative; margin-bottom: 1.5rem; max-width: 540px; }
+
+  .timeline-strip { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; border: 1px solid var(--border-gold); border-radius: 4px; overflow: hidden; }
+  .timeline-item { padding: 1.5rem; border-right: 1px solid var(--border-gold); background: var(--bg-card); text-align: center; transition: var(--transition); }
+  .timeline-item:last-child { border-right: none; }
+  .timeline-item:hover { background: rgba(201,149,42,0.08); }
+  .timeline-year { font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; color: var(--accent-amber); margin-bottom: 0.25rem; }
+  .timeline-item p { font-size: 0.85rem; color: var(--text-muted); font-style: italic; }
+
+  @media (max-width: 900px) {
+    .story-article-inner { grid-template-columns: 1fr; }
+    .story-article-img { min-height: 200px; }
+    .story-hero-inner { grid-template-columns: 1fr; }
+    .story-floating-cards { display: none; }
+    .timeline-strip { grid-template-columns: 1fr 1fr; }
+    .sotw-banner { grid-template-columns: 1fr; }
+    .sotw-banner .big-icon { display: none; }
+  }
+</style>
+
+<header>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">Saudade<span>Heritage Crafted, Modernity Worn</span></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="products.html">Collection</a>
+      <a href="offers.html">Offers</a>
+      <a href="stories.html" class="active">Stories</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="wishlist.html" class="nav-icon">♡<span class="badge wishlist-badge">0</span></a>
+      <button class="menu-toggle">☰</button>
+    </div>
+  </div>
+</header>
+</head>
+
+<body>
+<!-- HERO -->
+<div class="story-hero-banner">
+  <div class="story-hero-bg"></div>
+  <div class="story-hero-grid-bg"></div>
+  <div class="story-hero-inner">
+    <div>
+      <div class="hero-eyebrow">Living Traditions of India</div>
+      <h1 style="font-family:var(--font-heading);font-size:clamp(2.8rem,5vw,4.8rem);font-weight:900;line-height:1.05;margin-bottom:1.25rem;">
+        Every Stitch<br>Holds a <em style="color:var(--accent-amber);font-style:italic;">Story</em>
+      </h1>
+      <p style="color:var(--text-muted);font-style:italic;font-size:1.2rem;max-width:500px;margin-bottom:2.5rem;line-height:1.8;">
+        We document the origin, mythology, and living practice behind India's most extraordinary folk art traditions — because to wear them is to carry their history.
+      </p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+        <a href="#stories-list" class="btn-primary"><span>Read the Stories</span></a>
+        <a href="about.html" class="btn-outline">Know About Us</a>
+      </div>
+    </div>
+    <div class="story-floating-cards">
+
+  <!-- CARD 1 — MADHUBANI -->
+  <div class="sfc sfc-1">
+    <div class="sfc-pattern"></div>
+
+    <!-- BACKGROUND IMAGE -->
+    <img
+      src="images/madhubani.jpeg"
+      alt="Madhubani Folk Art"
+      style="
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        opacity: 0.55;
+        z-index: 0;
+        transition: transform 0.6s ease, opacity 0.4s ease;
+        border-radius: 6px;
+      "
+    />
+
+    <!-- Text content — all z-index: 2 to sit above image and overlay -->
+    <div class="sfc-label" style="position:relative; z-index:2;">Bihar, 2500 BCE</div>
+    <div class="sfc-title" style="position:relative; z-index:2;">Madhubani</div>
+  </div>
+
+  <!-- CARD 2 — WARLI -->
+  <div class="sfc sfc-2">
+    <div class="sfc-pattern"></div>
+
+    <!-- BACKGROUND IMAGE -->
+    <img
+      src="images/warli.jpeg"
+      alt="Warli Tribal Art"
+      style="
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        opacity: 0.55;
+        z-index: 0;
+        transition: transform 0.6s ease, opacity 0.4s ease;
+        border-radius: 6px;
+      "
+    />
+
+    <div class="sfc-label" style="position:relative; z-index:2;">Maharashtra, Ancient</div>
+    <div class="sfc-title" style="position:relative; z-index:2;">Warli</div>
+  </div>
+
+  <!-- CARD 3 — PHULKARI -->
+  <div class="sfc sfc-3">
+    <div class="sfc-pattern"></div>
+
+    <!-- BACKGROUND IMAGE -->
+    <img
+      src="images/pattchitra.jpeg"
+      alt="Pattachitra Painting"
+      style="
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        opacity: 0.55;
+        z-index: 0;
+        transition: transform 0.6s ease, opacity 0.4s ease;
+        border-radius: 6px;
+      "
+    />
+
+    <div class="sfc-label" style="position:relative; z-index:2;">Odisha, 12th Century</div>
+    <div class="sfc-title" style="position:relative; z-index:2;">Pattachitra</div>
+  </div>
+
+</div>
+  </div>
+</div>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-item">Madhubani<span class="marquee-dot"></span></div>
+    <div class="marquee-item">Warli<span class="marquee-dot"></span></div>
+    <div class="marquee-item">Phulkari<span class="marquee-dot"></span></div>
+    <div class="marquee-item">Kalamkari<span class="marquee-dot"></span></div>
+    <div class="marquee-item">Pattachitra<span class="marquee-dot"></span></div>
+    <div class="marquee-item">Bandhani<span class="marquee-dot"></span></div>
+    <div class="marquee-item">Ajrakh<span class="marquee-dot"></span></div>
+    <div class="marquee-item">Chikankari<span class="marquee-dot"></span></div>
+    <div class="marquee-item">Ikat<span class="marquee-dot"></span></div>
+    <div class="marquee-item">Kantha<span class="marquee-dot"></span></div>
+    <div class="marquee-item">Madhubani<span class="marquee-dot"></span></div>
+    <div class="marquee-item">Warli<span class="marquee-dot"></span></div>
+    <div class="marquee-item">Phulkari<span class="marquee-dot"></span></div>
+    <div class="marquee-item">Kalamkari<span class="marquee-dot"></span></div>
+    <div class="marquee-item">Pattachitra<span class="marquee-dot"></span></div>
+    <div class="marquee-item">Bandhani<span class="marquee-dot"></span></div>
+    <div class="marquee-item">Ajrakh<span class="marquee-dot"></span></div>
+    <div class="marquee-item">Chikankari<span class="marquee-dot"></span></div>
+  </div>
+</div>
+
+<!-- STORY OF THE WEEK -->
+<section class="section" style="padding-bottom:2rem;">
+  <div class="section-inner">
+    <div class="sotw-banner">
+      <div style="position:relative;">
+        <div class="sotw-tag">Story of the Week</div>
+        <h2>The Pen That Painted Gods — Kalamkari's Sacred Origins</h2>
+        <p>Long before screens and printing presses, the Kalamkari artists of Andhra Pradesh used a single bamboo pen dipped in natural dye to narrate the entire Mahabharata on a length of cotton cloth. Discover how this 3,000-year-old art survived Mughal courts, colonial disruption, and near-extinction to flourish in your wardrobe today.</p>
+        <a href="#story-kalamkari" class="btn-primary"><span>Read This Story</span></a>
+      </div>
+      <div class="big-icon" style="font-size:8rem;position:relative;">🦚</div>
+    </div>
+  </div>
+</section>
+
+<!-- STORIES LIST -->
+<section class="section" style="padding-top:0;" id="stories-list">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-eyebrow">All Stories</div>
+      <h2>The Traditions We Carry</h2>
+      <p style="color:var(--text-muted);font-style:italic;max-width:500px;margin:0 auto;">Nine folk art traditions. Nine living histories. One thread connecting them all.</p>
+    </div>
+
+    <!-- STORY: MADHUBANI -->
+        </div>
+        <div class="story-article-body">
+          <div class="story-article-region">Bihar · North India · Painting</div>
+          <h3>The Gods of Mithila — Madhubani's Sacred Canvas</h3>
+          <p>When a devastating earthquake struck Mithila in 1934, British civil servant William Archer stumbled upon extraordinary wall paintings — and documented them for the world. But the women of Mithila already knew what they had. They had been painting these walls for over two thousand five hundred years, not as decoration, but as prayer, as ritual, as protection.</p>
+          <p>Every motif carried meaning: the lotus for creation, the fish for fertility, the peacock for Saraswati, the sun and moon together for eternity. The painting tradition is entirely matrilineal — mothers teaching daughters, generation by generation, in an unbroken chain stretching back to antiquity.</p>
+          <div class="story-article-footer">
+            <div class="story-meta-item">📍 <b>Mithila, Bihar</b></div>
+            <div class="story-meta-item">🕐 <b>8 min read</b></div>
+            <div class="story-meta-item">📅 <b>Origins c. 500 BCE</b></div>
+            <button class="read-more-btn" onclick="expandStory('exp-madhubani', this)">Read Full Story →</button>
+          </div>
+          <div class="story-expanded" id="exp-madhubani">
+            <p>There are five distinct styles within Madhubani itself: Bharni (bold fill colours), Katchni (fine line-work in black and red), Tantrik (devotional, depicting deities), Godna (tattoo-inspired), and Kohbar (wedding chamber paintings). Each family traditionally specialised in one style, and the knowledge of which motif belongs to which ritual, which colour to which occasion — all of this was passed down in strict oral and visual tradition.</p>
+            <p>Today, Madhubani is painted not just on walls but on sarees, kurtas, paper, canvas and pottery. It has been exhibited in museums from New York to Tokyo. Yet in a small lane in Ranti village, an eighty-year-old woman still rises before dawn each day to paint the same lotus she has painted every day for sixty years — not for sale, but for the goddess who, she says, visits her in dreams.</p>
+            <div class="pull-quote">
+              <blockquote>"We do not paint because someone will see it. We paint because the goddess is watching."</blockquote>
+              <cite>— Sita Devi, National Award–winning Madhubani artist, Mithila</cite>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STORY: WARLI -->
+        <div class="story-article-body">
+          <div class="story-article-region">Maharashtra · West India · Painting</div>
+          <h3>Warli's White on Red — Triangles of the Forest People</h3>
+          <p>The Warli tribe of Palghar, Maharashtra paint on a ground of cow dung and mud, using a brush made from a chewed twig and white pigment ground from rice. Their iconography is radically simple — circles, triangles, and squares representing the sun, the human figure, the house. Yet from these three shapes, entire cosmologies are constructed.</p>
+          <p>A typical Warli painting depicts the Tarpa dance — a circle of men and women revolving around a flute player, mirroring the cycle of life and seasons. Look closely and you will find a wedding procession, a tiger hunt, a festival, a harvest — all rendered in the same beautiful, starkly geometric language.</p>
+          <div class="story-article-footer">
+            <div class="story-meta-item">📍 <b>Palghar, Maharashtra</b></div>
+            <div class="story-meta-item">🕐 <b>6 min read</b></div>
+            <div class="story-meta-item">📅 <b>Origins c. 2500 BCE</b></div>
+            <button class="read-more-btn" onclick="expandStory('exp-warli', this)">Read Full Story →</button>
+          </div>
+          <div class="story-expanded" id="exp-warli">
+            <p>For centuries, Warli painting was exclusively a ritual art, painted only by women on the occasion of weddings and harvests, confined to the inner walls of homes and never intended for outside eyes. It came to national attention only in the 1970s, when scholars began documenting and encouraging Warli artists to paint on paper and canvas.</p>
+            <p>It was Jivya Soma Mashe — a Warli man who broke tradition and began painting year-round — who is credited with transforming Warli from a ritual into a fine art. He died in 2018, having exhibited at galleries from Paris to New York, yet continued to live in his ancestral village, painting on mud walls.</p>
+            <div class="pull-quote">
+              <blockquote>"My painting is my prayer. When I paint, I am talking to the gods. The brush is my tongue."</blockquote>
+              <cite>— Jivya Soma Mashe (1934–2018), master Warli artist</cite>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STORY: PHULKARI -->
+        <div class="story-article-body">
+          <div class="story-article-region">Punjab · North India · Embroidery</div>
+          <h3>Phulkari — Women Stitching Their Prayers in Silk</h3>
+          <p>In the villages of Punjab, a girl's childhood was marked by a single years-long project: embroidering her own Phulkari shawl that she would wear at her wedding and pass down to her daughters. The word Phulkari means "flower work," and each bloom she stitched was both a prayer and an act of self-portrait — a life's aspirations compressed into silk on cloth.</p>
+          <p>Phulkari is worked in a darning stitch on coarse hand-spun khaddar, using floss silk thread in vivid, exuberant colours — saffron, crimson, emerald, indigo. The stitches run horizontally across the warp threads, creating a shimmering, holographic effect as the light shifts across the surface.</p>
+          <div class="story-article-footer">
+            <div class="story-meta-item">📍 <b>Punjab</b></div>
+            <div class="story-meta-item">🕐 <b>7 min read</b></div>
+            <div class="story-meta-item">📅 <b>Origins 15th Century</b></div>
+            <button class="read-more-btn" onclick="expandStory('exp-phulkari', this)">Read Full Story →</button>
+          </div>
+          <div class="story-expanded" id="exp-phulkari">
+            <p>The most sacred form of Phulkari is the Bagh — "garden" — in which embroidery covers the entire surface, leaving no background visible. A Bagh could take two to three years to complete and represented the highest expression of a woman's skill and devotion. To give a daughter a Bagh was to give her a life's worth of blessings stitched into fabric.</p>
+            <p>Partition in 1947 nearly destroyed Phulkari. Millions fled across newly drawn borders leaving behind their Bagh shawls and their looms. The craft survived only because women carried its memory in their hands. Those in refugee camps in Delhi would sit and embroider — not because there was a market for it, but because the stitching itself was comfort, was continuity, was home.</p>
+            <div class="pull-quote">
+              <blockquote>"My mother said: 'As long as your hands can hold a needle, you will never be without a home.'"</blockquote>
+              <cite>— Gurpreet Kaur, Phulkari embroiderer, Amritsar</cite>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STORY: KALAMKARI -->
+        <div class="story-article-body">
+          <div class="story-article-region">Andhra Pradesh · South India · Painting</div>
+          <h3>Kalamkari — The Pen That Painted the Mahabharata</h3>
+          <p>The word Kalamkari joins two Persian words: kalam (pen) and kari (work). It describes the ancient practice of painting on cloth using a bamboo pen — a technique so refined that an expert artist can render human faces with expressions visible to the naked eye, using a brush no wider than a single hair. The principal colours are achieved using twenty-three distinct natural processing steps.</p>
+          <p>Historically, Kalamkari artists called chitrakathis were village storytellers who travelled with painted cloths, unrolling them scene by scene as they narrated the Ramayana and Mahabharata to audiences who could not read. The cloth was their stage set, their screen, their sacred text.</p>
+          <div class="story-article-footer">
+            <div class="story-meta-item">📍 <b>Andhra Pradesh</b></div>
+            <div class="story-meta-item">🕐 <b>9 min read</b></div>
+            <div class="story-meta-item">📅 <b>Origins 3000 years ago</b></div>
+            <button class="read-more-btn" onclick="expandStory('exp-kalamkari', this)">Read Full Story →</button>
+          </div>
+          <div class="story-expanded" id="exp-kalamkari">
+            <p>There are two traditions of Kalamkari: the Srikalahasti style, in which each line is drawn entirely freehand, and the Machilipatnam style, in which block-printing supplements hand-painting. Both use only natural dyes — tamarind seeds, pomegranate rind, indigo, turmeric, iron-rich mud — processed over many steps before the cloth is considered ready to accept pigment.</p>
+            <p>The preparation alone takes an entire day: the cloth must be treated with myrobalan fruit and cow's milk to make its fibres receptive to natural dyes. Then dyes are applied in a precise sequence, because their chemistry means some colours must be fixed before others are layered. A single large Kalamkari textile can take three to six months to complete.</p>
+            <div class="pull-quote">
+              <blockquote>"Each colour I mix takes hours. If I rush, the cloth refuses it. The art teaches patience before it teaches anything else."</blockquote>
+              <cite>— P. Venkateswara Rao, Kalamkari master, Srikalahasti</cite>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STORY: PATTACHITRA -->
+        </div>
+        <div class="story-article-body">
+          <div class="story-article-region">Odisha · East India · Painting</div>
+          <h3>Pattachitra — Lord Jagannath and His Sacred Scroll Painters</h3>
+          <p>In the holy city of Puri, Odisha, the chitrakars have served the Jagannath Temple for over a thousand years. Their task was sacred: to paint the icons of Lord Jagannath on cloth and wood — images so charged with divine presence that only hereditary families were permitted to create them. Pattachitra is distinguished by its rich earthy palette, its exquisite line-work, and its characteristic tamarind-based lacquer finish.</p>
+          <div class="story-article-footer">
+            <div class="story-meta-item">📍 <b>Puri, Odisha</b></div>
+            <div class="story-meta-item">🕐 <b>7 min read</b></div>
+            <div class="story-meta-item">📅 <b>Origins 12th Century CE</b></div>
+            <button class="read-more-btn" onclick="expandStory('exp-patta', this)">Read Full Story →</button>
+          </div>
+          <div class="story-expanded" id="exp-patta">
+            <p>Preparation of the painting surface alone takes two to three days: multiple cloth layers are glued with tamarind paste, then coated with chalk powder and gum to create a smooth, stiff ground. The colours are entirely natural — white from crushed conch shells, black from lamp soot, red from vermilion, yellow from orpiment, green from a mixture of haritala and indigo. Brushes are made from mouse hair bound to bamboo sticks.</p>
+            <div class="pull-quote">
+              <blockquote>"We do not paint Lord Jagannath. We reveal him. He is already in the cloth. We only remove what covers him."</blockquote>
+              <cite>— Sudarshan Mahapatra, 14th-generation Pattachitra artist, Raghurajpur</cite>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STORY: BANDHANI -->
+        </div>
+        <div class="story-article-body">
+          <div class="story-article-region">Rajasthan &amp; Gujarat · West India · Dyeing</div>
+          <h3>Bandhani — A Million Tiny Knots, A Universe of Colour</h3>
+          <p>A skilled Bandhani artist can tie a thousand tiny knots an hour — each one a pinch of cloth bound with thread so fine it is nearly invisible, creating a dot of resist that will emerge after dyeing as a perfect undyed circle on a brilliant ground. A single Bandhani odhani may contain over one hundred thousand such knots, tied and untied by the same pair of hands over many patient days.</p>
+          <div class="story-article-footer">
+            <div class="story-meta-item">📍 <b>Rajasthan &amp; Gujarat</b></div>
+            <div class="story-meta-item">🕐 <b>6 min read</b></div>
+            <div class="story-meta-item">📅 <b>Origins c. 3000 BCE</b></div>
+            <button class="read-more-btn" onclick="expandStory('exp-bandhani', this)">Read Full Story →</button>
+          </div>
+          <div class="story-expanded" id="exp-bandhani">
+            <p>Traditional Bandhani was worked only in natural dyes — indigo for blue, pomegranate rind for yellow, madder root for red, henna for green. The specific combination of colours carried social meaning: red and yellow indicated a married woman; green signified pregnancy; colours of mourning were specific to community and region. The cloth was a silent biography worn on the body.</p>
+            <p>The untying of a finished Bandhani cloth is itself a ritual moment. After dyeing and drying in the sun, the eldest woman of the household unties each knot. As the cloth is unfurled, its full pattern is revealed for the first time — a surprise even to its maker, because the knots hide what lies beneath them until the very last moment.</p>
+            <div class="pull-quote">
+              <blockquote>"The beauty is not in the tying. It is in the letting go. That is also the lesson of a good life."</blockquote>
+              <cite>— Fatima Khatri, Bandhani master, Bhuj, Gujarat</cite>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STORY: AJRAKH -->
+        </div>
+        <div class="story-article-body">
+          <div class="story-article-region">Kutch, Gujarat · West India · Block Print &amp; Dye</div>
+          <h3>Ajrakh — The Desert's Geometry, Inked in Indigo and Madder</h3>
+          <p>Ajrakh is perhaps the most technically demanding of all Indian block-print traditions. A single cloth undergoes up to twenty-two distinct steps of printing, washing, drying and dyeing — a process taking nearly three weeks, requiring intimate knowledge of chemistry, season, and water quality. The hallmark of Ajrakh is its bilateral symmetry — the same intricate geometric pattern printed on both sides, perfectly aligned. The principal colours are deep indigo blue and brick red from natural mineral sources.</p>
+          <div class="story-article-footer">
+            <div class="story-meta-item">📍 <b>Kutch, Gujarat</b></div>
+            <div class="story-meta-item">🕐 <b>8 min read</b></div>
+            <div class="story-meta-item">📅 <b>Origins 4000+ years ago</b></div>
+            <button class="read-more-btn" onclick="expandStory('exp-ajrakh', this)">Read Full Story →</button>
+          </div>
+          <div class="story-expanded" id="exp-ajrakh">
+            <p>After the 2001 Gujarat earthquake, Ajrakh master Ismail Khatri lost his home, his workshop, his blocks — everything. He rebuilt from scratch and, in doing so, deepened his commitment to using only natural dyes. Today his son Abdul Jabbar Khatri is one of the most celebrated contemporary textile designers in India, taking Ajrakh's ancient geometry into international fashion collaborations while keeping every thread of production within the village of Ajrakhpur.</p>
+            <div class="pull-quote">
+              <blockquote>"After the earthquake, I had nothing. But my hands remembered everything. The knowledge is not in the workshop. It is in the hands."</blockquote>
+              <cite>— Ismail Khatri, Ajrakh master, Ajrakhpur</cite>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STORY: CHIKANKARI -->
+        </div>
+        <div class="story-article-body">
+          <div class="story-article-region">Lucknow, UP · North India · Embroidery</div>
+          <h3>Chikankari — The Shadow Work of Lucknow's Nawabi Courts</h3>
+          <p>Chikankari is the art of creating shadow patterns on fine muslin by stitching with white thread on white cloth. The result, when held up to light, is breathtaking: a shifting landscape of shadows, raised patterns, and delicate openwork that seems to hover between visibility and invisibility. Legend traces it to Nur Jahan, the formidably cultured Mughal empress, who introduced it to the Lucknow court in the 17th century.</p>
+          <div class="story-article-footer">
+            <div class="story-meta-item">📍 <b>Lucknow, Uttar Pradesh</b></div>
+            <div class="story-meta-item">🕐 <b>7 min read</b></div>
+            <div class="story-meta-item">📅 <b>Origins 17th Century CE</b></div>
+            <button class="read-more-btn" onclick="expandStory('exp-chikan', this)">Read Full Story →</button>
+          </div>
+          <div class="story-expanded" id="exp-chikan">
+            <p>A master Chikankari piece uses up to thirty-two distinct stitches — each with a specific name, specific purpose, and specific difficulty. Among these are the Phanda (a tiny knot stitch that creates a raised dot), the Jali (an openwork lattice), the Murri (a millet-seed stitch), and the Bakhiya (a shadow stitch creating the characteristic ghostly designs visible from the reverse of the cloth). Learning all thirty-two stitches takes years of apprenticeship under a master.</p>
+            <div class="pull-quote">
+              <blockquote>"Chikankari is not embroidery. It is a conversation between thread and light."</blockquote>
+              <cite>— Razia Begum, master Chikankari embroiderer, Lucknow</cite>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STORY: IKAT -->
+        </div>
+        <div class="story-article-body">
+          <div class="story-article-region">Telangana &amp; Odisha · South &amp; East India · Weaving</div>
+          <h3>Ikat — Dyeing the Thread Before Weaving the Dream</h3>
+          <p>In the double Ikat of Pochampally, Telangana, the most remarkable thing is this: the pattern exists in the thread before a single shuttle has passed through the loom. The weaver ties and dyes warp and weft threads in precise sequences, calculating mathematically where each colour will appear when the threads are finally interlaced. A double Ikat, where both warp and weft are resist-dyed before weaving, is among the most technically demanding textiles on earth.</p>
+          <div class="story-article-footer">
+            <div class="story-meta-item">📍 <b>Telangana &amp; Odisha</b></div>
+            <div class="story-meta-item">🕐 <b>8 min read</b></div>
+            <div class="story-meta-item">📅 <b>Origins Ancient</b></div>
+            <button class="read-more-btn" onclick="expandStory('exp-ikat', this)">Read Full Story →</button>
+          </div>
+          <div class="story-expanded" id="exp-ikat">
+            <p>Only three regions in the world still produce double Ikat: Pochampally in India, Patan in Gujarat (producing the legendary Patola silk), and Bali in Indonesia. A single Pochampally double Ikat saree can take a family of weavers two to three months to complete. The Patola of Patan is so difficult — requiring the precise alignment of resist-dyed patterns in both warp and weft — that the community of weavers who know its secrets has dwindled to fewer than a hundred families worldwide.</p>
+            <div class="pull-quote">
+              <blockquote>"Before I weave, the cloth already exists in my mind. I must only make my hands fast enough to catch up with what I already see."</blockquote>
+              <cite>— Peddi Reddy, master Ikat weaver, Pochampally</cite>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="section" style="background:var(--bg-secondary);padding-top:4rem;">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-eyebrow">Through the Ages</div>
+      <h2>A Timeline of Tradition</h2>
+    </div>
+    <div class="timeline-strip">
+      <div class="timeline-item">
+        <div class="timeline-year">3000 BCE</div>
+        <h4>Bandhani &amp; Ajrakh</h4>
+        <p>Tie-dye and block resist printing practised in the Indus Valley</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2500 BCE</div>
+        <h4>Madhubani &amp; Warli</h4>
+        <p>Sacred wall paintings document ritual, mythology and daily life</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">12th Century</div>
+        <h4>Pattachitra &amp; Ikat</h4>
+        <p>Temple patronage elevates scroll painting and resist-weave to sacred art</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">17th Century</div>
+        <h4>Chikankari &amp; Phulkari</h4>
+        <p>Mughal and Sikh courts incubate refined embroidery arts for the ages</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="section newsletter">
+  <div class="section-inner">
+    <div class="newsletter-inner">
+      <div class="ornament">✦ ❧ ✦</div>
+      <h2>New Stories, Every Month</h2>
+      <p>Subscribe and receive a new folk art story — beautifully written, deeply researched — in your inbox each month.</p>
+      <form class="newsletter-form" onsubmit="return false;">
+        <input type="text" placeholder="Your email address...">
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">Saudade<span>Heritage Crafted</span></a>
+        <p style="margin-top:1rem;">Every purchase supports India's folk artisans and their ancient crafts.</p>
+        <div class="footer-social">
+          <a href="#" class="social-btn">✦</a>
+          <a href="#" class="social-btn">f</a>
+          <a href="#" class="social-btn">P</a>
+          <a href="#" class="social-btn">▶</a>
+        </div>
+      </div>
+      <div class="footer-col"><h4>Collections</h4><ul><li><a href="products.html">All Products</a></li><li><a href="new-arrivals.html">New Arrivals</a></li><li><a href="offers.html">Offers</a></li></ul></div>
+      <div class="footer-col"><h4>Stories</h4><ul>
+        <li><a href="stories.html#story-madhubani">Madhubani</a></li>
+        <li><a href="stories.html#story-warli">Warli</a></li>
+        <li><a href="stories.html#story-phulkari">Phulkari</a></li>
+        <li><a href="stories.html#story-kalamkari">Kalamkari</a></li>
+        <li><a href="stories.html">All Stories</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Account</h4><ul><li><a href="account.html">Sign In</a></li><li><a href="wishlist.html">Wishlist</a></li><li><a href="contact.html">Contact</a></li><li><a href="faqs.html">FAQs</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Saudade. All rights reserved. Made with reverence for India's artisans.</p>
+      <p><a href="#" style="color:var(--text-muted);text-decoration:none;">Privacy Policy</a> · <a href="#" style="color:var(--text-muted);text-decoration:none;">Terms</a></p>
+    </div>
+  </div>
+</footer>
+
+<div class="toast"></div>
+<div class="page-bg-pattern"></div>
+</body>
+<script src="js/main.js"></script>
+<script>
+function filterStory(btn, cat) {
+  document.querySelectorAll('.story-filter-bar .size-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  document.querySelectorAll('.story-article').forEach(function(article) {
+    var cats = article.dataset.story || '';
+    article.style.display = (cat === 'all' || cats.includes(cat)) ? 'block' : 'none';
+  });
+}
+function expandStory(id, btn) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  var isOpen = el.style.display === 'block';
+  el.style.display = isOpen ? 'none' : 'block';
+  if (btn) btn.textContent = isOpen ? 'Read Full Story →' : 'Collapse Story ↑';
+}
+</script>
+</html>

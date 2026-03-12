@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<title>Offers & Sales — Saudade</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IM+Fell+English:ital@0;1&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+
+<header>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">Saudade<span>Heritage Crafted, Modernity Worn</span></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="products.html">Collection</a>
+      <a href="offers.html" class="active">Offers</a>
+      <a href="stories.html">Stories</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="wishlist.html" class="nav-icon">♡<span class="badge wishlist-badge">0</span></a>
+      <button class="menu-toggle">☰</button>
+    </div>
+  </div>
+</header>
+</head>
+
+<body>
+<div class="page-hero" style="background:linear-gradient(160deg,#3a1a08,#1a0a04);">
+  <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><span>Offers</span></div>
+  <h1>Offers & Sales</h1>
+  <p>Heritage at a better price — curated discounts on our finest folk art pieces.</p>
+</div>
+
+<section class="section">
+  <div class="section-inner">
+    <!-- MAIN BANNER -->
+    <div class="offers-banner">
+      <div style="position:relative;">
+        <div class="discount-badge">UP TO 40% OFF</div>
+        <h2>Holi Heritage Sale</h2>
+        <p>Celebrate colours with India's most colourful art traditions. Limited time only.</p>
+        <div style="display:inline-flex;align-items:center;gap:0.75rem;background:rgba(0,0,0,0.25);border-radius:4px;padding:0.75rem 1.5rem;margin-bottom:1.5rem;">
+          <span style="font-family:var(--font-display);font-size:0.7rem;letter-spacing:0.15em;color:rgba(255,255,255,0.8);">SALE ENDS IN:</span>
+          <div data-countdown="172800">
+            <span style="display:inline-flex;align-items:center;gap:0.3rem;">
+              <span style="background:rgba(0,0,0,0.3);padding:0.2rem 0.5rem;border-radius:3px;font-weight:700;" class="h">47</span>h
+              <span style="background:rgba(0,0,0,0.3);padding:0.2rem 0.5rem;border-radius:3px;font-weight:700;" class="m">59</span>m
+              <span style="background:rgba(0,0,0,0.3);padding:0.2rem 0.5rem;border-radius:3px;font-weight:700;" class="s">00</span>s
+            </span>
+          </div>
+        </div>
+        <br>
+        <a href="products.html" class="btn-outline" style="background:white;color:var(--accent-rust);border-color:white;">Shop the Sale</a>
+      </div>
+    </div>
+
+    <!-- COUPON CODES -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:3rem;">
+      <div style="background:var(--bg-card);border:1px dashed var(--accent-gold);border-radius:4px;padding:1.5rem;text-align:center;">
+        <h4 style="margin-bottom:0.5rem;">First Order</h4>
+        <div style="font-family:var(--font-display);font-size:1.8rem;font-weight:700;color:var(--accent-amber);margin:0.5rem 0;">FOLK10</div>
+        <p style="color:var(--text-muted);font-size:0.9rem;font-style:italic;margin-bottom:1rem;">10% off your first purchase</p>
+        <button class="btn-outline" onclick="copyCode('FOLK10')">Copy Code</button>
+      </div>
+      <div style="background:var(--bg-card);border:1px dashed var(--accent-rust);border-radius:4px;padding:1.5rem;text-align:center;">
+        <h4 style="margin-bottom:0.5rem;">Holi Special</h4>
+        <div style="font-family:var(--font-display);font-size:1.8rem;font-weight:700;color:var(--accent-amber);margin:0.5rem 0;">HOLI25</div>
+        <p style="color:var(--text-muted);font-size:0.9rem;font-style:italic;margin-bottom:1rem;">25% off ethnic wear</p>
+        <button class="btn-outline" onclick="copyCode('HOLI25')">Copy Code</button>
+      </div>
+      <div style="background:var(--bg-card);border:1px dashed var(--accent-indigo);border-radius:4px;padding:1.5rem;text-align:center;">
+        <h4 style="margin-bottom:0.5rem;">Free Shipping</h4>
+        <div style="font-family:var(--font-display);font-size:1.8rem;font-weight:700;color:var(--accent-amber);margin:0.5rem 0;">SHIP0</div>
+        <p style="color:var(--text-muted);font-size:0.9rem;font-style:italic;margin-bottom:1rem;">Free shipping on orders ₹2000+</p>
+        <button class="btn-outline" onclick="copyCode('SHIP0')">Copy Code</button>
+      </div>
+    </div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="index.html" class="logo">Saudade<span>Heritage Crafted</span></a><p style="margin-top:1rem;">Every purchase supports India's folk artisans.</p></div>
+      <div class="footer-col"><h4>Collections</h4><ul><li><a href="products.html">All Products</a></li><li><a href="new-arrivals.html">New Arrivals</a></li><li><a href="offers.html">Offers</a></li></ul></div>
+      <div class="footer-col"><h4>Discover</h4><ul><li><a href="stories.html">Stories</a></li><li><a href="about.html">About Us</a></li><li><a href="faqs.html">FAQs</a></li></ul></div>
+      <div class="footer-col"><h4>Account</h4><ul><li><a href="account.html">Sign In</a></li><li><a href="wishlist.html">Wishlist</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>© 2025 Saudade. All rights reserved.</p></div>
+  </div>
+</footer>
+
+<div class="toast"></div>
+<div class="page-bg-pattern"></div>
+</body>
+<script src="js/main.js"></script>
+<script>
+function copyCode(code) {
+  showToast('<span>✓</span> Code <span>' + code + '</span> copied!');
+}
+</script>
+</html>
